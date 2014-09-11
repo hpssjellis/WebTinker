@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>WebTinker</h1>
+<h2>Spark Core onboard LED Control</h2>
+<p>This will switch LED D7 ON and OFF</p>
+
+	<button type="button" onclick="D7ON()">D7 ON</button>
+	<button type="button" onclick="D7OFF()">D7 OFF</button>
+
+<script>
+var baseURL = "https://api.spark.io/v1/devices/";
+var accessToken = "07e0bb79d74e8f4952fa3a9a71c2ba40b0a57691";
+var coreID = "55ff6f065075555314141887";
+function D7ON()
+{
+$.post("https://api.spark.io/v1/devices/"+coreID+"/digitalwrite?access_token="+accessToken,
+	{
+		args:"D7,HIGH"
+	});
+}
+function D7OFF()
+{
+$.post("https://api.spark.io/v1/devices/"+coreID+"/digitalwrite?access_token="+accessToken,
+	{
+		args:"D7,LOW"
+	});
+}
+</script>
+</body>
+</html>
